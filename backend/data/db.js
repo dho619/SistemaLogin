@@ -30,12 +30,12 @@ const usuarios_perfis = [
     {
         id: proximoId3(),
         usuario_id: 2,
-        perfil_id: 3,
+        perfil_id: 2,
     },
     {
         id: proximoId3(),
         usuario_id: 3,
-        perfil_id: 3,
+        perfil_id: 2,
     }
 ]
 
@@ -64,13 +64,112 @@ const usuarios = [
     },
     {
         id: proximoId(),
-        nome: 'comum',
+        nome: 'Comum 2',
+        email: 'teste2@teste.com',
+        senha: criptografarSenha('123'),
+        ativo: true,
+        created_at: new Date,
+        updated_at: new Date
+    },
+    {
+        id: proximoId(),
+        nome: 'Comum',
         email: 'teste3@teste.com',
         senha: criptografarSenha('123'),
         ativo: true,
         created_at: new Date,
         updated_at: new Date
-    }
+    },
+    {
+        id: proximoId(),
+        nome: 'Comum',
+        email: 'teste4@teste.com',
+        senha: criptografarSenha('123'),
+        ativo: true,
+        created_at: new Date,
+        updated_at: new Date
+    },
+    {
+        id: proximoId(),
+        nome: 'Comum',
+        email: 'teste5@teste.com',
+        senha: criptografarSenha('123'),
+        ativo: true,
+        created_at: new Date,
+        updated_at: new Date
+    },
+    {
+        id: proximoId(),
+        nome: 'Comum',
+        email: 'teste6@teste.com',
+        senha: criptografarSenha('123'),
+        ativo: true,
+        created_at: new Date,
+        updated_at: new Date
+    },
+    {
+        id: proximoId(),
+        nome: 'Comum',
+        email: 'teste7@teste.com',
+        senha: criptografarSenha('123'),
+        ativo: true,
+        created_at: new Date,
+        updated_at: new Date
+    },
+    {
+        id: proximoId(),
+        nome: 'Comum',
+        email: 'teste8@teste.com',
+        senha: criptografarSenha('123'),
+        ativo: true,
+        created_at: new Date,
+        updated_at: new Date
+    },
+    {
+        id: proximoId(),
+        nome: 'Comum',
+        email: 'teste9@teste.com',
+        senha: criptografarSenha('123'),
+        ativo: true,
+        created_at: new Date,
+        updated_at: new Date
+    },
+    {
+        id: proximoId(),
+        nome: 'Comum',
+        email: 'teste10@teste.com',
+        senha: criptografarSenha('123'),
+        ativo: true,
+        created_at: new Date,
+        updated_at: new Date
+    },
+    {
+        id: proximoId(),
+        nome: 'Comum',
+        email: 'teste11@teste.com',
+        senha: criptografarSenha('123'),
+        ativo: true,
+        created_at: new Date,
+        updated_at: new Date
+    },
+    {
+        id: proximoId(),
+        nome: 'Comum',
+        email: 'teste12@teste.com',
+        senha: criptografarSenha('123'),
+        ativo: true,
+        created_at: new Date,
+        updated_at: new Date
+    },
+    {
+        id: proximoId(),
+        nome: 'Comum',
+        email: 'teste13@teste.com',
+        senha: criptografarSenha('123'),
+        ativo: true,
+        created_at: new Date,
+        updated_at: new Date
+    },
 ]
 
 module.exports = { usuarios, perfis, proximoId, proximoId2, proximoId3, usuarios_perfis}

@@ -77,11 +77,12 @@ const mutations = {
     excluirUsuario(_, { filtro }, ctx){
         ctx && ctx.validarAdmin()
         const i = indiceUsuario(filtro)
+        if (i < 0) return null
         //Excluir todos ligamentos de usuarios
         for(let j in usuarios_perfis){
             if(usuarios_perfis[j].usuario_id === i){
                 usuarios_perfis[j] = {} //apagar estava dando erro
-            }                       //com banco de dados funciona melhor
+            }                           //com banco de dados funciona melhor
             
         }
 

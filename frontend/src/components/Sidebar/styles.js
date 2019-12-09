@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const Form = styled.form`
+const Div = styled.div`
     /* Sidebar links */
     a {
     display: block;
@@ -23,4 +23,4 @@ const Form = styled.form`
     }
 `
 
-export default Form
+export default Div

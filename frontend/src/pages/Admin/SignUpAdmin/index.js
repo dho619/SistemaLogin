@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import gql from "graphql-tag"
 
 //Imports de outros arquivos
@@ -12,16 +12,31 @@ class SignupAdmin extends Component {
     nome: "",
     email: "",
     senha: "",
-    error: ""
+    perfis: [],
+    perfil: "",
+    menssage: null
   };
-  //Cadastrar novo Usuario comum
+
+  componentDidMount() { //nao clk o "() => ", pq e uma funcao da proprio js
+      api.query({
+        query: gql`{perfis { id rotulo }}`
+      }).then(resultado => {
+          this.setState({perfis: resultado.data.perfis})
+          this.erros = null
+      }).catch(e => {
+          this.erros = e
+      })
+  }
+  //Cadastrar novo Usuario pela conta admin
   handleSignUp = async e => {
+   
     e.preventDefault();
-    const { nome, email, senha } = this.state;
-    if (!nome || !email || !senha) {
-      this.setState({ error: "Preencha todos os dados para se cadastrar" });
+    const { nome, email, senha, perfil } = this.state
+    if (!nome || !email || !senha|| !perfil || perfil === 'selecione' ) {
+      this.setState({ menssage: "Preencha todos os dados para se cadastrar" })
     } else {
       try {
+        const perfis = [{nome: perfil}]//como o frontend por ora so aceita um perfil...
         api.mutate({
           mutation: gql`
             mutation
@@ -29,13 +44,15 @@ class SignupAdmin extends Component {
               $nome: String!
               $email: String!
               $senha: String!
+              $perfis: [PerfilFiltro]
             )
             {
-              registrarUsuario(
+              novoUsuario(
                 dados:{
                   nome: $nome,
                   email: $email, 
-                  senha: $senha
+                  senha: $senha,
+                  perfis: $perfis
                 }
               )
             {
@@ -48,32 +65,34 @@ class SignupAdmin extends Component {
         variables: {
           nome,
           email,
-          senha
+          senha,
+          perfis,
         }
         }).then(resultado => {
-          console.log(resultado.data.registrarUsuario)
-          this.setState({ error: null})
+          console.log(resultado.data.novoUsuario)
+          this.setState({ menssage: null})
           // this.setState({ nome: null})
           // this.setState({ email: null})
           // this.setState({ senha: null})
-          this.props.history.push("/");
+          this.setState({ menssage: 'Usuario Cadastrado com sucesso!'})
         }).catch(e =>  {
           console.log(e)
-          this.setState({ error: 'Email Já Cadastrado!' });}
+          this.setState({ menssage: 'Email Já Cadastrado!' })}
           )
-      } catch (err) {
-        console.log(err);
-        this.setState({ error: "Ocorreu um erro ao registrar sua conta. T.T" });
+      } catch (e) {
+        console.log(e);
+        this.setState({ menssage: "Ocorreu um erro ao registrar o novo usuario. T.T" });
       }
     }
   }
 
   render() {
+    const {perfis} = this.state
     return (
       <Container>
         <Form onSubmit={this.handleSignUp}>
-          <img src={Logo} alt="Airbnb logo" />
-          {this.state.error && <p>{this.state.error}</p>}
+          <img src={Logo} alt="Logo" />
+          {this.state.menssage && <p>{this.state.menssage}</p>}
           <input
             type="text"
             placeholder="Nome Completo"
@@ -89,9 +108,19 @@ class SignupAdmin extends Component {
             placeholder="Senha"
             onChange={e => this.setState({ senha: e.target.value })}
           />
-          <button type="submit">Cadastrar grátis</button>
-          <hr />
-          <Link to="/">Fazer login</Link>
+          <label className='cbPerfis'>
+            <p>Escolha o perfil desse usuario:</p>
+            <select onChange={e => this.setState({ perfil: e.target.value })}>
+            <option value='selecione'>{'<selecione>'}</option>
+              {
+                perfis.map( perfil => (
+                  <option key={perfil.id} value={perfil.nome}>{perfil.rotulo}</option>
+                ))
+              } 
+            </select>
+          </label>
+          <button type="submit">Cadastrar Novo Usuario</button>
+          <hr /> 
         </Form>
       </Container> 
     );

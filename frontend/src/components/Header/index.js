@@ -43,8 +43,8 @@ export default class Header extends Component {
             <div className='my_header'>
                 <header id="main-header">Sistema Gurren Lagann</header>
                 <div className='login' >  
-                    {/*So para saber que esta logado*/}
-                    <a href='#'>{this.state.usuario && this.state.usuario.nome}</a>
+                    {/*So para saber quem esta logado*/}
+                    <p href=''>{this.state.usuario && this.state.usuario.nome}</p>
                     {/*o alt='' em img e por questao de acessibilidade, ele fornece o que e aquela imagem, para deficientes visuais ou navegacao apenas de texto*/}
                     <a href={Link} title={iconDesc} className='IconLogInLogout' onClick= {() => {this.loginOrLogout();}}><img src={icon} alt="Imagem Login ou Logout"></img>
                         <h2>{iconDesc}</h2>

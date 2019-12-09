@@ -16,6 +16,7 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   cursor: auto;
+  background: #fff;
   img {
     width: 300px;
     margin: 10px 0 40px;

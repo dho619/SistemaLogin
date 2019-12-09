@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import App from "./pages/Usuarios/HomeUsuario";
 import RegisterProfile from "./pages/Admin/RegisterProfile";
 import SignupAdmin from "./pages/Admin/SignUpAdmin";
+import Usuarios from './pages/Admin/Usuarios';
 
 
 //Rota para usuarios logados
@@ -63,6 +64,7 @@ const Routes = () => (
       <PrivateRoute path="/app" component={App} />
       <PrivateRouteAdmin path="/RegisterProfile" component={RegisterProfile} />
       <PrivateRouteAdmin path="/signupAdmin" component={SignupAdmin} />
+      <PrivateRouteAdmin path="/usuarios" component={Usuarios} />
       <Route path="*" component={() => <h1>Page not found</h1>} />
     </Switch>
   </BrowserRouter>
