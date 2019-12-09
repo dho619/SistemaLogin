@@ -1,12 +1,12 @@
 footer#rodape {
 	clear: both;
-    background-color: #7B68EE;
+    background-color: rgb(209, 209, 209);
     margin: 5px auto 0; /*Ficar centralizado*/
     padding: 0.2%;
 }
 
 footer#rodape a#link {
-    color: rgb(255, 255, 255);
+    color: #000000;
 }
 
 footer#rodape a#link:hover {
@@ -16,6 +16,6 @@ footer#rodape a#link:hover {
 footer#rodape p {
 	text-align: center;
         font-size: 9pt;
-        color: rgba(255, 255, 255, 0.877);
+        color: #000000;
         font-family: sans-serif;
 }

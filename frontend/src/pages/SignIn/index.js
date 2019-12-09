@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import gql from "graphql-tag"
 
 //Imports de outros arquivos
-import Logo from "../../assets/Astek_Logo.png";
+import Logo from "../../assets/Logo.png";
 import api from "../../services/api";
 import { login } from "../../services/auth";
 

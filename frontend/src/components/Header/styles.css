@@ -1,6 +1,5 @@
 .my_header{
-    height: 60%;
-    background: #7B68EE;
+    background: rgb(209, 209, 209);
     padding: 10px;
     display: flex; /*Ocupara toda linha*/
     justify-content: space-between; /*Um todo a esquerda e outro toda a direita*/
@@ -13,10 +12,18 @@
     margin-top: -10px;
 }
 
+.login a{
+    color: #000000;
+}
+
+.login a:hover{
+    color: red;
+}
+
 header#main-header{
     font-size: 48px;
     font-weight: bold;
-    color: #FFF;
+    color: #000000;
 }
 
 .IconLogInLogout {
@@ -25,8 +32,8 @@ header#main-header{
     align-items: end;
     display: block;
     margin-right: 10px;
-    background-color: #7B68EE;
-    border: 2px solid #7B68EE;
+    background-color: rgb(209, 209, 209);
+    border: 2px solid rgb(209, 209, 209);
     border-radius:10px; /*Arrendondar as bordas*/
     height: 40px;
     cursor: pointer; /*Muda a seta do mouse para a maozinha em cima do botao*/
@@ -34,7 +41,7 @@ header#main-header{
 
 .IconLogInLogout img  {
     height: 40px;
-    background-color: #7B68EE;
+    background-color: rgb(209, 209, 209);
 }
 
 .IconLogInLogout h2  {

@@ -14,7 +14,7 @@ const Form = styled.form`
     .Content {
         margin-left: 200px;
         padding: 1px 16px;
-        height: 1000px;  
+        height: 1000px;
     }
 
 `

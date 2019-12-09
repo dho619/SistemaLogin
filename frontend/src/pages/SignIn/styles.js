@@ -4,12 +4,13 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  enable-background: 0%;
   height: 100vh;
 `;
 
 export const Form = styled.form`
   width: 400px;
-  background: #fff;
+  enable-background: 0%;
   padding: 20px;
   display: flex;
   flex-direction: column;

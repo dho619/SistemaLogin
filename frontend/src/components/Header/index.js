@@ -41,7 +41,7 @@ export default class Header extends Component {
     render() {
         return  (
             <div className='my_header'>
-                <header id="main-header">Astek Sistemas</header>
+                <header id="main-header">Sistema Gurren Lagann</header>
                 <div className='login' >  
                     {/*So para saber que esta logado*/}
                     <a href='#'>{this.state.usuario && this.state.usuario.nome}</a>

@@ -4,7 +4,7 @@ import gql from "graphql-tag"
 
 //Imports de outros arquivos
 import api from "../../../services/api";
-import Logo from "../../../assets/Astek_Logo.png";
+import Logo from "../../../assets/Logo.png";
 import { Form, Container } from "./styles";
 
 class SignupAdmin extends Component {
