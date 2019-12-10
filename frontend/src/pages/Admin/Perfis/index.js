@@ -11,43 +11,42 @@ import iconEdt from '../../../assets/IconEdt.png';
 import iconNew from '../../../assets/IconNew.png';
 import Form from './styles';
 
-export default class Usuarios extends Component {
+export default class Perfis extends Component {
     // usa-se o state para poder acessar essas variaveis externamente
     state = { //state e um objeto
-        Users: [],
+        Perfis: [],
         page: 0,
-        UserInfo: {}
+        PerfilInfo: {}
     }
 
     //componentDidMount executa assim que e criado a pagina
     componentDidMount() { //nao clk o "() => ", pq e uma funcao da proprio js
-        this.loadUsers();
+        this.loadPerfis();
     }
  
-    loadUsers = async (page = 0) => {
+    loadPerfis = async (page = 0) => {
         await api.query({
             query: gql`
                 query{
-                    usuarios{
-                     	id nome email 
-                        ativo created_at updated_at perfis {rotulo}
+                    perfis{
+                     	id nome rotulo 
 	                }
                 }
             `
         }).then(response => {
             //Simular uma paginasao, ate eu coloca-la no backend ou retirar
-            var Users = []
+            var Perfis = []
             var aux = []
-            for(let user of response.data.usuarios){
+            for(let Perfil of response.data.perfis){
                 if(aux.length < 10){
-                    aux.push(user)
+                    aux.push(Perfil)
                 }else {
-                    Users.push(aux)
+                    Perfis.push(aux)
                     aux = []
                 }
             }
-            if (aux.length > 0) Users.push(aux)
-            this.setState({ Users: Users[page], UserInfo: {pages: Users.length-1}});
+            if (aux.length > 0) Perfis.push(aux)
+            this.setState({ Perfis: Perfis[page], PerfilInfo: {pages: Perfis.length-1}});
         }).catch(e => {
             console.log(e)
         })       
@@ -63,22 +62,22 @@ export default class Usuarios extends Component {
 
         this.setState({page: pageNumber})
         
-        this.loadUsers(pageNumber);
+        this.loadPerfis(pageNumber);
     }
 
     nextPage = () => {
-        const { page, UserInfo} = this.state;
+        const { page, PerfilInfo} = this.state;
         
         //se esta na ultima pagina, ja retorna sem fazer nada
-        if (page === UserInfo.pages) return;
+        if (page === PerfilInfo.pages) return;
 
         const pageNumber = page + 1;
 
         this.setState({page: pageNumber})
-        this.loadUsers(pageNumber);//chamando a funcao de mostrar a pagina
+        this.loadPerfis(pageNumber);//chamando a funcao de mostrar a pagina
     }
 
-    Deleteuser = async (filtro) => {
+    DeletePerfil = async (filtro) => {
         if (isAdmin())  {
             //let confirma = confirm("Deseja realmente apagar esse usuario?")
             // if (!confirma) return null
@@ -87,12 +86,12 @@ export default class Usuarios extends Component {
                     mutation(
                         $id: Int
                     ){
-                        excluirUsuario (
+                        excluirPerfil (
                             filtro: {
                                 id: $id
                             }
                         ){
-                            id nome email
+                            id nome rotulo
                         }
                     }
                 `,
@@ -100,12 +99,12 @@ export default class Usuarios extends Component {
                     id: filtro.id,
                 }
             }).then(resultado => {
-                console.log(resultado.data.excluirUsuario)
+                console.log(resultado.data.excluirPerfil)
             }).catch(e => {
                 console.log(e)
             })
             const { page } = this.state
-            this.loadUsers(page)
+            this.loadPerfis(page)
         }else {
             alert('Você não tem essa permissão!');
         }
@@ -113,34 +112,34 @@ export default class Usuarios extends Component {
 
     //render sempre executa novamente, se alguma variavel do state for alterada
     render() {
-        const { Users, page,UserInfo} = this.state; //desistruturando
+        const { Perfis, page, PerfilInfo} = this.state; //desistruturando
 
         //a key no h2 e passada, pq o react pede que tenha uma key unica pra cada item da iteracao
         return  (
             <Form onSubmit={() => {}}> 
                 <div className='header'>
-                    <h1>Lista de usuarios:</h1>{/*alt='' e por questao de acessibilidade, ele fornece o que e aquela imagem, para deficientes visuais ou navegacao apenas de texto*/}
-                    <Link to={`/signupAdmin`} title='Novo Usuario' className='btIcon'><img alt='Imagem Novo Usuario' src={iconNew}/></Link>    
+                    <h1>Lista de perfis:</h1>{/*alt='' e por questao de acessibilidade, ele fornece o que e aquela imagem, para deficientes visuais ou navegacao apenas de texto*/}
+                    <Link to={`/RegisterProfile`} title='Novo Perfis' className='btIcon'><img alt='Imagem Novo Perfis' src={iconNew}/></Link>    
                 </div>
                 {//aqui codigo javascript, apos "=> (" volta a ser html
-                    Users.map(user => (
-                            <article key={user.id}>
-                                <strong>{user.nome}</strong>
-                                <p>{user.email}</p>
-                                <p>Ativo: {user.ativo?'Sim':'Não'}</p>
-                                <p>Criado em {user.created_at}</p>
-                                <p>Ultima atualização em {user.updated_at}</p>
-                                <Link to={`/users/${user.id}`}>Acessar</Link>
+                    Perfis.map(Perfil => (
+                            <article key={Perfil.id}>
+                                <strong>ID: {Perfil.id}</strong>
+                                <br/>
+                                <strong>Nome: {Perfil.nome}</strong>
+                                <br/>
+                                <strong>Rotulo: {Perfil.rotulo}</strong>
+                                <Link to={`/Perfis/${Perfil.id}`}>Acessar</Link>
                                 <div className='buttons'>  {/*alt='' e por questao de acessibilidade, ele fornece o que e aquela imagem, para deficientes visuais ou navegacao apenas de texto*/}
-                                    <Link to={`/updateusers/${user.id}`} title='Editar' className='btIcon'><img alt='Imagem Editar Usuario' src={iconEdt}/></Link>
-                                    <button title='Deletar' className='btIcon' onClick= {() => {this.Deleteuser({id: user.id});}}><img alt='Imagem Deletar Usuario' src={iconDel}/></button>
+                                    <Link to={`/updatePerfis/${Perfil.id}`} title='Editar' className='btIcon'><img alt='Imagem Editar Perfis' src={iconEdt}/></Link>
+                                    <button title='Deletar' className='btIcon' onClick= {() => {this.DeletePerfil({id: Perfil.id});}}><img alt='Imagem Deletar Perfis' src={iconDel}/></button>
                                 </div>
                             </article>
                     ))
                 }
                 <div className="actions">
                     <button disabled={page === 0} onClick={this.prevPage}>Anterior</button>
-                    <button disabled={page === UserInfo.pages} onClick={this.nextPage}>Próxima</button>
+                    <button disabled={page === PerfilInfo.pages} onClick={this.nextPage}>Próxima</button>
                 </div>
             </Form>
 

@@ -25,7 +25,7 @@ class Sidebar extends Component {
         {this.state.admin &&<a href="/signupAdmin">Novo Registro</a>}
         {this.state.admin &&<a href="/RegisterProfile">Novo Perfil</a>}
         {this.state.admin && <a href="/usuarios">Usuarios</a>}
-        <a href="#implementar">Perfis</a>
+        {this.state.admin && <a href="/perfis">Perfis</a>}
       </Div>
     )
   }

@@ -11,6 +11,7 @@ import App from "./pages/Usuarios/HomeUsuario";
 import RegisterProfile from "./pages/Admin/RegisterProfile";
 import SignupAdmin from "./pages/Admin/SignUpAdmin";
 import Usuarios from './pages/Admin/Usuarios';
+import Perfis from './pages/Admin/Perfis';
 
 
 //Rota para usuarios logados
@@ -65,6 +66,7 @@ const Routes = () => (
       <PrivateRouteAdmin path="/RegisterProfile" component={RegisterProfile} />
       <PrivateRouteAdmin path="/signupAdmin" component={SignupAdmin} />
       <PrivateRouteAdmin path="/usuarios" component={Usuarios} />
+      <PrivateRouteAdmin path="/perfis" component={Perfis} />
       <Route path="*" component={() => <h1>Page not found</h1>} />
     </Switch>
   </BrowserRouter>
