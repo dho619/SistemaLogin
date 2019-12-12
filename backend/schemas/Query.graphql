@@ -7,6 +7,6 @@ type Query {
     perfil(filtro: PerfilFiltro!): Perfil
     questionarios: [Questionario]!
     questionario(filtro: QuestionarioFiltro!): Questionario
-    Planos: [Plano]!
-    Plano: (filtro: PlanoFiltro!): Plano
+    planos: [Plano]!
+    plano(filtro: PlanoFiltro!): Plano
 }

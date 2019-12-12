@@ -5,6 +5,7 @@ const Usuario = require('./Type/Usuario')
 const Perfil = require('./Type/Perfil')
 const Questionario = require('./Type/Questionario')
 const Pergunta = require('./Type/Pergunta')
+const Plano = require('./Type/Plano')
 
 module.exports = {
     Query,
@@ -12,5 +13,6 @@ module.exports = {
     Usuario,
     Perfil,
     Questionario,
-    Pergunta
+    Pergunta,
+    Plano
 }

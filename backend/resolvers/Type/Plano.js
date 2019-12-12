@@ -1,4 +1,4 @@
-const { usuarios_perfis, perfis } = require('../../data/db')
+const { quest_Planos, questionarios } = require('../../data/db')
 
 function formataData(data){
     let dia     = ("0" + data.getDate()).slice(-2); // 1-31 -- o slice e o 0 e pra quando ter apenas um numero 
@@ -20,27 +20,31 @@ function formataData(data){
 }
 
 module.exports = {
-    updated_at(usuario) {
-        return formataData(usuario.updated_at)
-    },
-    created_at(usuario) {
-        return formataData(usuario.created_at)
-    },
-    perfis(usuario){
+    questionarios(plano){
         let ids = []
-        //Pegando os ids de perfis
-        for (let i in usuarios_perfis){
-            if(usuarios_perfis[i].usuario_id === usuario.id){
-                ids.push(usuarios_perfis[i].perfil_id)
+        //Pegando os ids dos questionarios
+        for (let qp of quest_Planos){
+            if(qp.plano_id === plano.id){
+                ids.push(qp.questionario_id)
             }
         }
-        let perfisDoUsuario = []
-        //Pegando os perfis
-        for (let i in perfis){
-            if(ids.includes(perfis[i].id)){
-                perfisDoUsuario.push(perfis[i])
+
+        let questPlanos = []
+        //Pegando os questionarios
+        for (let questionario of questionarios){
+            if(ids.includes(questionario.id)){
+                questPlanos.push(questionario)
             }
         }
-        return perfisDoUsuario
+        return questPlanos
+    },
+    data_Inicio(plano){
+        return formataData(plano.data_Inicio)
+    },
+    data_Fim(plano){
+        //Caso nao tenha data fim, sair
+        if (!plano.data_Fim) return null
+
+        return formataData(plano.data_Fim)
     }
 }

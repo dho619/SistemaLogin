@@ -9,7 +9,7 @@ module.exports = {
                 ids.push(p.id)
             }
         }
-        console.log(ids)
+
         let perguntasQuest = []
         //Pegando as perguntas
         for (let pergunta of perguntas){
