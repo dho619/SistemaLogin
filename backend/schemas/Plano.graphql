@@ -1,0 +1,19 @@
+type Plano {
+    id: int!
+    usuario_id: int!
+    data_Inicio: Date!
+    data_fim: Date
+    unidades: Int
+    unid_Consumidas: Int
+    questPlanos_id: [Quest_Plano]
+}
+
+type Quest_Planos {
+    id: Int!
+    plano_id: Int!
+    questionario_id: Int!
+}
+
+input PlanoFiltro {
+    id: Int
+}

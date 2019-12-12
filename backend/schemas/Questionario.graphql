@@ -1,0 +1,23 @@
+type Questionario {
+    id: Int!
+    nome: String!
+    public: Boolean!
+    ativo: Boolean!
+    perguntas: [Pergunta]
+}
+type Pergunta {
+    id: Int!
+    questionario_id: Int!
+    descricao: String!
+    opcoes: [Opcao]
+}
+type Opcao {
+    id: Int!
+    pergunta_id: Int!
+    descricao: String!
+}
+
+input QuestionarioFiltro {
+    id: Int
+    nome: String
+}
