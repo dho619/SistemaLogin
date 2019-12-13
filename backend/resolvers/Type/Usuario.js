@@ -1,4 +1,4 @@
-const { usuarios_perfis, perfis } = require('../../data/db')
+const { usuarios_perfis, perfis, planos } = require('../../data/db')
 
 function formataData(data){
     let dia     = ("0" + data.getDate()).slice(-2); // 1-31 -- o slice e o 0 e pra quando ter apenas um numero 
@@ -42,5 +42,23 @@ module.exports = {
             }
         }
         return perfisDoUsuario
+    },
+    planos(usuario){
+        let ids = []
+        //Pegando os ids dos planos
+        for (let p of planos){
+            if((p.usuario_id === usuario.id) && (p.ativo)){
+                ids.push(p.id)
+            }
+        }
+
+        let planosUsuario = []
+        //Pegando as planos
+        for (let plano of planos){
+            if(ids.includes(plano.id)){
+                planosUsuario.push(plano)
+            }
+        }
+        return planosUsuario
     }
 }

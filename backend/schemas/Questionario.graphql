@@ -4,6 +4,7 @@ type Questionario {
     public: Boolean!
     ativo: Boolean!
     perguntas: [Pergunta]
+    usuarios: [Usuario]
 }
 type Pergunta {
     id: Int!

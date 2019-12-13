@@ -344,7 +344,8 @@ const planos = [
         data_Inicio: new Date,
         data_Fim: new Date(Math.floor(new Date)+ (5*60*1000)),//5min em milisegundos
         unidades: null,
-        unid_Consumidas: null
+        unid_Consumidas: null,
+        ativo: true
     },
     {
         id: proximoId7(),
@@ -352,7 +353,8 @@ const planos = [
         data_Inicio: new Date,
         data_Fim: null,
         unidades: 10,
-        unid_Consumidas: 0        
+        unid_Consumidas: 0,
+        ativo: true        
     }
 ]
 
@@ -377,6 +379,6 @@ const quest_Planos = [
 module.exports = { 
     usuarios, perfis, usuarios_perfis,
     questionarios, perguntas, opcoes,
-    planos, quest_Planos,
+    planos, quest_Planos, proximoId7, proximoId8,
     proximoId, proximoId2, proximoId3
 }

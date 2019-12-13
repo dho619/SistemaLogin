@@ -9,10 +9,17 @@ type Usuario {
     nome: String!
     email: String!
     perfis: [Perfil]
+    planos: [Plano]
     token: String
     ativo: Boolean
     created_at: String
     updated_at: String
+}
+
+type Usuarios_Perfis{
+    id: Int
+    usuario_id: Int
+    perfil_id: Int
 }
 
 input UsuarioInput {
@@ -46,10 +53,4 @@ input PerfilInput {
 input PerfilFiltro {
     id: Int
     nome: String
-}
-
-type Usuarios_Perfis{
-    id: Int
-    usuario_id: Int
-    perfil_id: Int
 }

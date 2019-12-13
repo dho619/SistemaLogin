@@ -30,6 +30,19 @@ type Mutation {
         dados: PerfilInput!
     ): Perfil
 
+    novoPlano(
+        dados: PlanoInput!
+    ): Plano
+
+    alterarPlano(
+        filtro: PlanoFiltro!
+        dados: PlanoInput!
+    ): Plano
+
+    excluirPlano(
+        filtro: PlanoFiltro!
+    ): Plano
+
 }
 
 

@@ -1,4 +1,4 @@
-const { perguntas } = require('../../data/db')
+const { perguntas, usuarios, planos, quest_Planos } = require('../../data/db')
 
 module.exports = {
     perguntas(questionario){
@@ -18,5 +18,31 @@ module.exports = {
             }
         }
         return perguntasQuest
+    },
+    usuarios(questionario){
+        let idsPlanos = []
+        //Pegando os ids dos planos
+        for (let qp of quest_Planos){
+            if(qp.questionario_id === questionario.id){
+                idsPlanos.push(qp.plano_id)
+            }
+        }
+
+        let idsUsuarios = []
+        //Pegando os ids dos usuarios
+        for (let p of planos){
+            if(idsPlanos.includes(p.id)){
+                idsUsuarios.push(p.usuario_id)
+            }
+        }
+
+        let usuariosQuest = []
+        //Pegando os usuarios
+        for (let usuario of usuarios){
+            if(idsUsuarios.includes(usuario.id)){
+                usuariosQuest.push(usuario)
+            }
+        }
+        return usuariosQuest
     }
 }

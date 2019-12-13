@@ -28,7 +28,7 @@ module.exports = {
                 ids.push(qp.questionario_id)
             }
         }
-
+        
         let questPlanos = []
         //Pegando os questionarios
         for (let questionario of questionarios){

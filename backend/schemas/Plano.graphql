@@ -5,6 +5,7 @@ type Plano {
     data_Fim: String
     unidades: Int
     unid_Consumidas: Int
+    ativo: Boolean
     questionarios: [Questionario]
 }
 
@@ -16,4 +17,11 @@ type Quest_Plano {
 
 input PlanoFiltro {
     id: Int
+}
+
+input PlanoInput {
+    usuario_id: Int!
+    data_Fim: String
+    unidades: Int
+    questionarios: [QuestionarioFiltro]!
 }
