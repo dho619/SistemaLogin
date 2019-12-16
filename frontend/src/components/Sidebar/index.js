@@ -19,7 +19,8 @@ class Sidebar extends Component {
     return (
       <Div>
         <a href="/">Home</a>
-        {this.state.logado && <a href="/app">APP</a>}
+        {this.state.logado && !this.state.admin && <a href="/planos">Meus Planos</a>}
+        {this.state.logado && !this.state.admin && <a href="/adquirirPlano">Adquirir Planos</a>}
         {!this.state.logado && <a href="/signIn">Login</a>}
         {!this.state.logado && <a href="/signUp">Novo Registro</a>}
         {this.state.admin &&<a href="/signupAdmin">Novo Registro</a>}

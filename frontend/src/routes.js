@@ -7,7 +7,8 @@ import { isAuthenticated, isAdmin } from "./services/auth";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Home from "./pages/Home";
-import App from "./pages/Usuarios/HomeUsuario";
+import Planos from "./pages/UsuariosLogados/Planos";
+import AdquirirPlano from "./pages/UsuariosLogados/AdquirirPlano";
 import RegisterProfile from "./pages/Admin/RegisterProfile";
 import SignupAdmin from "./pages/Admin/SignUpAdmin";
 import Usuarios from './pages/Admin/Usuarios';
@@ -60,9 +61,10 @@ const Routes = () => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/signup" component={SignUp} />
+      <UnloggedRoute path="/signup" component={SignUp} />
       <UnloggedRoute path="/signIn" component={SignIn} />
-      <PrivateRoute path="/app" component={App} />
+      <PrivateRoute path="/planos" component={Planos} />
+      <PrivateRoute path="/adquirirPlano" component={AdquirirPlano} />
       <PrivateRouteAdmin path="/RegisterProfile" component={RegisterProfile} />
       <PrivateRouteAdmin path="/signupAdmin" component={SignupAdmin} />
       <PrivateRouteAdmin path="/usuarios" component={Usuarios} />

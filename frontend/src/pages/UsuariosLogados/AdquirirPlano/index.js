@@ -2,11 +2,11 @@ import React, { Component } from "react";
 
 import Form from './styles'
 
-export default class App extends Component {
+export default class AdquirirQuest extends Component {
   render() {
     return (
         <Form>
-           Hello!
+            Aqui é onde você poderá comprar novos questionários!
         </Form>
     )
   }

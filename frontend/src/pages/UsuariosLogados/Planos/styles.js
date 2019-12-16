@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
-
 const Form = styled.form`
-  max-width: 700px; /*Para nao passar de 700px o bloco de perfis*/
+  max-width: 700px; /*Para nao passar de 700px o bloco de planos*/
   margin: 20px auto 0; /*Ficar centralizado*/
   padding: 0 20px; /*margem do lado de dentro, a ordem e cima direita baixo esquerda*/
 

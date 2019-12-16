@@ -46,7 +46,7 @@ module.exports = async ({req}) => {
             //se o filtro nao estiver setado
             if(!filtro) throw err
             const { id, email } = filtro
-            //se no filtro nao id nem email
+            //se no filtro nao tem id  e nem email
             if(!id && !email) throw err
             //se id setado, mas diferente do logado
             if(id && id !== usuario.id) throw err

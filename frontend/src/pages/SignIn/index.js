@@ -46,7 +46,7 @@ class SignIn extends Component {
         }).then(resultado => {
             login(resultado.data.login);
             this.setState({ error: null})
-            window.location.href= "/app";
+            window.location.href= "/planos";
         }).catch(e => {
             this.erros = e
         })

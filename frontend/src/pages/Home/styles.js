@@ -4,7 +4,14 @@ const Form = styled.form`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    h2 {
+        padding:100px;
+        border: 2pt solid gray;
+        max-width: 800px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 `
 
 export default Form
