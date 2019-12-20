@@ -17,6 +17,7 @@ type Quest_Plano {
 
 input PlanoFiltro {
     id: Int
+    usuario_id: Int
 }
 
 input PlanoInput {

@@ -88,7 +88,7 @@ const usuarios = [
     },
     {
         id: proximoId(),
-        nome: 'Comum 2',
+        nome: 'Arya Stark',
         email: 'teste2@teste.com',
         senha: criptografarSenha('123'),
         ativo: true,
@@ -97,7 +97,7 @@ const usuarios = [
     },
     {
         id: proximoId(),
-        nome: 'Comum',
+        nome: 'João das Neves',
         email: 'teste3@teste.com',
         senha: criptografarSenha('123'),
         ativo: true,

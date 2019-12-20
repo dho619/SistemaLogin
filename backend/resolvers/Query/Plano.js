@@ -20,15 +20,14 @@ module.exports = {
         return planos
     },
     plano(_, { filtro }, ctx) {
-        ctx && ctx.validarAdmin()
-        if (!filtro) return null
+        ctx && ctx.validarUsuarioFiltro({id: filtro.usuario_id})
         let { id } = filtro
+        if (!id) return null
         let plano= {}
         if(id){
             plano = planos
                     .filter(p => p.id === id)
         } else return null
-
         return plano[0]
     },
     planosUsuario(_, { filtro }, ctx) {
