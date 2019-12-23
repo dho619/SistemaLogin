@@ -10,7 +10,8 @@ export default class QuestsPlano extends Component {
         id: 0,
         Questionarios: [],
         page: 0,
-        exibirPerg : false,
+        exibirPerg : new Map(),
+        exibirOpcPerg : new Map(),
         QuestInfo: {}
     }
 
@@ -62,8 +63,35 @@ export default class QuestsPlano extends Component {
         })       
     };
 
-    exibirPerguntas = () => {
-        this.setState({exibirPerg: !this.state.exibirPerg})
+    
+    exibirPerguntas = (id) => {
+        let { exibirPerg } = this.state
+        try {
+            let exibir = exibirPerg.get(id)
+            if(exibir){
+                exibirPerg.set(id, false)
+            } else {
+                exibirPerg.set(id, true)  
+            }
+        } catch (error) {
+            exibirPerg.set(id, true)            
+        }
+        this.setState({exibirPerg})
+    }
+    
+    exibirOpcPerg = (id) => {
+        let { exibirOpcPerg } = this.state
+        try {
+            let exibir = exibirOpcPerg.get(id)
+            if(exibir){
+                exibirOpcPerg.set(id, false)
+            } else {
+                exibirOpcPerg.set(id, true)  
+            }
+        } catch (error) {
+            exibirOpcPerg.set(id, true)            
+        }
+        this.setState({exibirOpcPerg})
     }
 
     render(){
@@ -74,21 +102,34 @@ export default class QuestsPlano extends Component {
                     <h1>Questionários do plano de id {this.state.id}:</h1>
                 </div>
                 {//aqui codigo javascript, apos "=> (" volta a ser html
-                Questionarios.map(Questionario => (
-                            <article key={Questionario.id}>
-                                <strong>ID: {Questionario.id}</strong>
+                Questionarios.map(questionario => (
+                            <article className= 'blocos' key={questionario.id}>
+                                <strong>ID: {questionario.id}</strong>
                                 <br/>
-                                <strong>Nome do Questionário: {Questionario.nome}</strong>
+                                <strong>Nome do Questionário: {questionario.nome}</strong>
                                 <br/>
-                                <strong>Perguntas do Questionário: <button onClick={this.exibirPerguntas}>Exibir</button> </strong>
+                                <strong>Perguntas do Questionário: <button className='exibir' onClick={() => {this.exibirPerguntas(questionario.id)}}>Mostrar</button> </strong>
                                 <br/>
                                 <ul>
-                                {   this.state.exibirPerg &&
-                                    Questionario.perguntas.map(pergunta => (
-                                    <article key={pergunta.id}>
+                                {   this.state.exibirPerg.get(questionario.id) &&
+                                    questionario.perguntas.map(pergunta => (
+                                    <article className= 'blocos' key={pergunta.id}>
                                         <br/>
                                         <strong>Pergunta: {pergunta.descricao}</strong>
                                         <br/>
+                                        <strong> Opções: <button className='exibir' onClick={() => {this.exibirOpcPerg(pergunta.id)}}>Mostrar</button></strong>
+                                        <br/>
+                                        <ul>
+                                        {   this.state.exibirOpcPerg.get(pergunta.id) &&
+                                            pergunta.opcoes.map(opcao => (
+                                            <article className='opcoes' key={opcao.id}>
+                                                <br/>
+                                                <li>{opcao.descricao}</li>
+                                                <br/>
+                                            </article> 
+                                            ))
+                                        }
+                                        </ul>
                                     </article> 
                                     ))
                                 }

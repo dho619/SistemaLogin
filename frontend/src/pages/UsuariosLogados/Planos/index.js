@@ -11,7 +11,6 @@ export default class Planos extends Component {
     // usa-se o state para poder acessar essas variaveis externamente
     state = { //state e um objeto
         Usuario: {},
-        Planos: [],
         page: 0,
         PlanoInfo: {}
     }
