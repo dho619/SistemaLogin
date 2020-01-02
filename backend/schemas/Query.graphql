@@ -6,6 +6,7 @@ type Query {
     perfis: [Perfil]!
     perfil(filtro: PerfilFiltro!): Perfil
     questionarios: [Questionario]!
+    listarQuestionarios: [Questionario]!
     questionario(filtro: QuestionarioFiltro!): Questionario
     planos: [Plano]!
     planosUsuario(filtro: UsuarioFiltro!): [Plano]!

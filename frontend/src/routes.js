@@ -9,6 +9,7 @@ import SignIn from "./pages/SignIn"
 import Home from "./pages/Home"
 import Planos from "./pages/UsuariosLogados/Planos"
 import AdquirirPlano from "./pages/UsuariosLogados/AdquirirPlano"
+import Cart from "./pages/UsuariosLogados/Cart"
 import QuestsPlano from "./pages/UsuariosLogados/QuestsPlano"
 import RegisterProfile from "./pages/Admin/RegisterProfile"
 import SignupAdmin from "./pages/Admin/SignUpAdmin"
@@ -66,6 +67,7 @@ const Routes = () => (
       <PrivateRoute path="/planos" component={Planos} />
       <PrivateRoute path="/questsPlano/:id" component={QuestsPlano} />
       <PrivateRoute path="/adquirirPlano" component={AdquirirPlano} />
+      <PrivateRoute path="/cart" component={Cart} />
       <PrivateRouteAdmin path="/RegisterProfile" component={RegisterProfile} />
       <PrivateRouteAdmin path="/signupAdmin" component={SignupAdmin} />
       <PrivateRouteAdmin path="/usuarios" component={Usuarios} />

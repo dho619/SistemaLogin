@@ -1,6 +1,10 @@
 const { questionarios } = require('../../data/db')
 
-module.exports = {
+const query = {
+
+    listarQuestionarios(){
+        return query.questionarios()
+    },
     questionarios(parent, args, ctx){
         ctx && ctx.validarAdmin()
         return questionarios
@@ -20,3 +24,5 @@ module.exports = {
         return questionario[0]
     }
 }
+
+module.exports = query

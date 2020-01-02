@@ -1,5 +1,5 @@
-const usuarioLogado = "@astek-Usuario"
-const TOKEN_KEY = "@astek-Token"
+const usuarioLogado = "@Gurren-Usuario"
+const TOKEN_KEY = "@Gurren-Token"
 
 export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null
 

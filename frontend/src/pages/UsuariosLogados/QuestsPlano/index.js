@@ -12,7 +12,8 @@ export default class QuestsPlano extends Component {
         page: 0,
         exibirPerg : new Map(),
         exibirOpcPerg : new Map(),
-        QuestInfo: {}
+        QuestInfo: {},
+        Usuario: {}
     }
 
     //componentDidMount executa assim que e criado a pagina
