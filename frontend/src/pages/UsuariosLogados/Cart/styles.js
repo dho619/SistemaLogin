@@ -19,8 +19,9 @@ const Div = styled.div`
     button:hover {
         opacity: 0.7;
     }
-    .btRight {
-
+    .btConfirma {
+        float: right;
+        font-size: 15px;
     }
     .estrutura {
         min-width: 40%;
@@ -63,6 +64,13 @@ const Div = styled.div`
                     align-items: center;                 
                 }
             }
+        }
+        .informacoes {
+                border-bottom: 2pt dotted black;
+                padding: 10px;
+        }
+        .pagamento {
+            padding: 10px;
         }
     }
 `

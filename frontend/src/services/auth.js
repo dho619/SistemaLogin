@@ -1,9 +1,12 @@
 const usuarioLogado = "@Gurren-Usuario"
 const TOKEN_KEY = "@Gurren-Token"
+const pagou = "@Gurren-Pagamento"
 
 export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null
 
 export const getToken = () => localStorage.getItem(TOKEN_KEY)
+
+export const vezPagamento = () => localStorage.getItem(pagou)
 
 export const login = (usuario) => {
   localStorage.setItem(TOKEN_KEY, usuario.token)
@@ -28,3 +31,11 @@ export const isAdmin = () => {
             .some(p => p.nome === 'admin')
   return admin
 }
+
+export const pagar = () => {
+  localStorage.setItem(pagou, 'true')
+};
+
+export const limparPagar = () => {
+  localStorage.removeItem(pagou)
+};

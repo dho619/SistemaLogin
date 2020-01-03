@@ -5,7 +5,7 @@ const Div = styled.div`
     justify-content: space-between;
     align-items: flex-start;
     min-width: 40%;
-
+    padding: 20px 60px 20px 60px;
     button {
             padding: 5px;
             border-radius: 5px; /*Arrendondar as bordas*/
